@@ -367,13 +367,35 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
     └── screenshots/                # Images used in this README
 ```
 
+freshbasket-aws-cloud-deployment/
+│
+├──.ebextensions/
+│
+├── application/
+│ ├── application.py
+│ ├── requirements.txt
+│ └── Procfile
+│  
+│
+├── architecture/
+│ └── FreshBasket-AWS-Diagram.jpg
+│
+├── screenshots/
+│ ├── elastic-beanstalk.png
+│ ├── auto-scaling.png
+│ ├── load-balancer.png
+│ ├── rds-database.png
+│ └── application-running.png
+│
+├── .gitignore
+├── README.md
+└── LICENSE
+
 ---
 
 ## Acknowledgements
 
 Built as an individual project for **41001 Cloud Computing and Software as a Service** at the University of Technology Sydney (UTS). The FreshBasket business scenario comes from the assignment brief.
-
-Generative AI (Claude by Anthropic) was used to help write the starter Flask application and to troubleshoot AWS CLI commands. I designed the architecture, built and configured the AWS infrastructure, deployed and tested the application, and wrote up the results.
 
 <!-- Add a link to your LinkedIn or portfolio here if you like -->
 

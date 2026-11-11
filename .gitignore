@@ -1,0 +1,17 @@
+# credentials 
+*.pem
+*.key
+.env
+deploy/options.json
+
+# build output
+*.zip
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
