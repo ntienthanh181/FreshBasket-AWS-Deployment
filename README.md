@@ -47,50 +47,7 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 
 <!-- 📸 SCREENSHOT: your final draw.io diagram (docs/screenshots/architecture.png) -->
 
-![Architecture diagram](docs/screenshots/architecture.png)
-
-<details>
-<summary>Text version of the architecture (renders on GitHub)</summary>
-
-```mermaid
-flowchart TB
-    user([Client browser])
-
-    subgraph aws[AWS Cloud · us-east-1]
-      subgraph vpc[VPC 10.0.0.0/16]
-        igw[Internet Gateway]
-        alb[Application Load Balancer<br/>HTTP :80 · health check /health]
-
-        subgraph asg[Auto Scaling group · min 2 / max 4]
-          subgraph aza[us-east-1a · public subnet 10.0.0.0/20]
-            ec2a[EC2 t3.micro<br/>custom AMI]
-          end
-          subgraph azb[us-east-1b · public subnet 10.0.16.0/20]
-            ec2b[EC2 t3.micro<br/>custom AMI]
-          end
-        end
-
-        rds[(RDS MySQL<br/>db.t3.micro · Single-AZ<br/>not publicly accessible)]
-      end
-
-      cw[CloudWatch alarms<br/>CPU > 60% / < 30%]
-      eb[Elastic Beanstalk]
-      sns[SNS email alerts]
-      s3[S3 app versions]
-    end
-
-    user -->|1| igw -->|2| alb
-    alb -->|3| ec2a
-    alb -->|3| ec2b
-    ec2a -->|4 · TCP 3306| rds
-    ec2b -->|4 · TCP 3306| rds
-    cw -.->|scale out / in| asg
-    eb -.->|provisions & deploys| vpc
-    eb -.-> sns
-    eb -.-> s3
-```
-
-</details>
+![Architecture diagram](/architecture/FreshBasket-AWS-Diagram.jpg)
 
 **Request flow**
 
@@ -245,7 +202,9 @@ echo "FreshBasket base image - built $(date -u +%F)" | sudo tee /etc/freshbasket
 
 ### 3. Upload the application version
 
-Zip the **contents** of the repo (files at the root of the zip, including the hidden `.ebextensions` folder):
+Zip the **contents** of the applicaion folder in repo (including the hidden `.ebextensions` folder):
+
+(make sure to stand at application folder)
 
 ```bash
 zip -r freshbasket-v1.zip application.py requirements.txt Procfile .ebextensions
@@ -326,11 +285,11 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
 
 ## Problems I hit and how I fixed them
 
-| Problem                                                                       | Cause                                                                    | Fix                                                                                                                 |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| The console's new one-page wizard had no database or scaling-trigger settings | Simplified setup UI                                                      | Created the environment from the **AWS CLI** with a full option-settings file, which also made the setup repeatable |
-| Platform branch didn't match the custom AMI                                   | The console defaulted to Python 3.15; the AMI was built from Python 3.12 | Pinned the platform ARN explicitly in the CLI command                                                               |
-| Couldn't find the platform AMI in the launch wizard                           | Beanstalk images are listed under _Community AMIs_, not _Quick Start_    | Queried it with `describe-platform-version`, then searched Community AMIs                                           |
+| Problem | Cause | Fix |
+| ------- | ----- | --- |
+
+| Platform branch didn't match the custom AMI | The console defaulted to Python 3.15; the AMI was built from Python 3.12 | Pinned the platform ARN explicitly in the CLI command |
+| Couldn't find the platform AMI in the launch wizard | Beanstalk images are listed under _Community AMIs_, not _Quick Start_ | Queried it with `describe-platform-version`, then searched Community AMIs |
 
 | Learner Lab rejected role creation | Lab accounts can't create IAM roles | Used the pre-built `LabRole` and `LabInstanceProfile` |
 | Risk of duplicate seed data | Two or more instances start at the same time | Wrapped table creation and seeding in a MySQL `GET_LOCK` |
@@ -352,7 +311,7 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
 
 ## Acknowledgements
 
-Built as an individual project for **41001 Cloud Computing and Software as a Service** at the University of Technology Sydney (UTS). The FreshBasket business scenario comes from the assignment brief.
+This project was built as an individual project for **41001 Cloud Computing and Software as a Service** at the University of Technology Sydney (UTS). The FreshBasket business scenario comes from the assignment brief.
 
 <!-- Add a link to your LinkedIn or portfolio here if you like -->
 
