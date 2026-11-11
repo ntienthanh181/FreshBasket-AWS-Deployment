@@ -24,7 +24,6 @@ A load-balanced, auto-scaling Python web application deployed on AWS across two 
 - [Running locally](#running-locally)
 - [Problems I hit and how I fixed them](#problems-i-hit-and-how-i-fixed-them)
 - [What I'd change for production](#what-id-change-for-production)
-- [Repository layout](#repository-layout)
 - [Acknowledgements](#acknowledgements)
 
 ---
@@ -332,9 +331,9 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
 | The console's new one-page wizard had no database or scaling-trigger settings | Simplified setup UI                                                      | Created the environment from the **AWS CLI** with a full option-settings file, which also made the setup repeatable |
 | Platform branch didn't match the custom AMI                                   | The console defaulted to Python 3.15; the AMI was built from Python 3.12 | Pinned the platform ARN explicitly in the CLI command                                                               |
 | Couldn't find the platform AMI in the launch wizard                           | Beanstalk images are listed under _Community AMIs_, not _Quick Start_    | Queried it with `describe-platform-version`, then searched Community AMIs                                           |
-| SSH as `root` was refused                                                     | Amazon Linux only allows `ec2-user`                                      | Connected as `ec2-user`                                                                                             |
-| Learner Lab rejected role creation                                            | Lab accounts can't create IAM roles                                      | Used the pre-built `LabRole` and `LabInstanceProfile`                                                               |
-| Risk of duplicate seed data                                                   | Two or more instances start at the same time                             | Wrapped table creation and seeding in a MySQL `GET_LOCK`                                                            |
+
+| Learner Lab rejected role creation | Lab accounts can't create IAM roles | Used the pre-built `LabRole` and `LabInstanceProfile` |
+| Risk of duplicate seed data | Two or more instances start at the same time | Wrapped table creation and seeding in a MySQL `GET_LOCK` |
 
 ---
 
@@ -348,48 +347,6 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
 - **HTTPS** on the ALB with an ACM certificate.
 - **ELB health checks for the Auto Scaling group** and scaling on request count per target, which reacts faster than CPU.
 - Deploy to **ap-southeast-2 (Sydney)** for lower latency for Sydney customers, and longer backup retention with cross-region snapshot copies.
-
----
-
-## Repository layout
-
-```
-.
-├── application.py                  # Flask app (WSGI entry point: application)
-├── requirements.txt                # Flask, PyMySQL, Gunicorn
-├── Procfile                        # Gunicorn behind the platform's nginx
-├── .ebextensions/
-│   └── 01-freshbasket.config       # Health check path, ASG size and CPU triggers
-├── deploy/
-│   └── options.template.json       # Full environment config for create-environment
-└── docs/
-    ├── deployment-guide.md         # Step-by-step console guide
-    └── screenshots/                # Images used in this README
-```
-
-freshbasket-aws-cloud-deployment/
-│
-├──.ebextensions/
-│
-├── application/
-│ ├── application.py
-│ ├── requirements.txt
-│ └── Procfile
-│  
-│
-├── architecture/
-│ └── FreshBasket-AWS-Diagram.jpg
-│
-├── screenshots/
-│ ├── elastic-beanstalk.png
-│ ├── auto-scaling.png
-│ ├── load-balancer.png
-│ ├── rds-database.png
-│ └── application-running.png
-│
-├── .gitignore
-├── README.md
-└── LICENSE
 
 ---
 
