@@ -9,7 +9,7 @@ A load-balanced, auto-scaling Python web application deployed on AWS across two 
 
 <!-- 📸 SCREENSHOT: hero image of the running app (docs/screenshots/app-home.png) -->
 
-![FreshBasket running on AWS](docs/screenshots/app-home.png)
+![FreshBasket running on AWS](/architecture/FreshBasket-AWS-Diagram.jpg)
 
 ---
 
