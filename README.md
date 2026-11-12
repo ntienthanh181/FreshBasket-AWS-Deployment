@@ -293,16 +293,12 @@ Outside EC2, the instance panel shows `local` because there's no instance metada
 
 ## Problems I hit and how I fixed them
 
-| Problem | Cause | Fix |
-| ------- | ----- | --- |
-
-| Platform branch didn't match the custom AMI | The console defaulted to Python 3.15; the AMI was built from Python 3.12 | Pinned the platform ARN explicitly in the CLI command |
-
-| Couldn't find the platform AMI in the launch wizard | Beanstalk images are listed under _Community AMIs_, not _Quick Start_ | Queried it with `describe-platform-version`, then searched Community AMIs |
-
-| Learner Lab rejected role creation | Lab accounts can't create IAM roles | I Used the pre-built `LabRole` and `LabInstanceProfile` |
-
-| Risk of duplicate seed data | Two or more instances start at the same time | Wrapped table creation and seeding in a MySQL `GET_LOCK` |
+| Problem                                             | Cause                                                                    | Fix                                                                       |
+| --------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Platform branch didn't match the custom AMI         | The console defaulted to Python 3.15; the AMI was built from Python 3.12 | Pinned the platform ARN explicitly in the CLI command                     |
+| Couldn't find the platform AMI in the launch wizard | Beanstalk images are listed under _Community AMIs_, not _Quick Start_    | Queried it with `describe-platform-version`, then searched Community AMIs |
+| Learner Lab rejected role creation                  | Lab accounts can't create IAM roles                                      | I Used the pre-built `LabRole` and `LabInstanceProfile`                   |
+| Risk of duplicate seed data                         | Two or more instances start at the same time                             | Wrapped table creation and seeding in a MySQL `GET_LOCK`                  |
 
 ---
 
