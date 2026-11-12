@@ -72,7 +72,7 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 
 <!-- 📸 SCREENSHOTS: infrastructure evidence. Keep the ones you think are most impressive. -->
 
-**Infrastructure screenshots**
+## Infrastructure Screenshots
 
 <details>
 <summary>view here</summary>
