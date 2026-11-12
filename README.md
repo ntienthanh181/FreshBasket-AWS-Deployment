@@ -9,7 +9,7 @@ A load-balanced, auto-scaling Python web application deployed on AWS across two 
 
 <!-- 📸 SCREENSHOT: hero image of the running app (docs/screenshots/app-home.png) -->
 
-![FreshBasket running on AWS](/architecture/FreshBasket-AWS-Diagram.jpg)
+![FreshBasket running on AWS](/screenshots/app.png)
 
 ---
 
@@ -45,8 +45,6 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 
 ## Architecture
 
-<!-- 📸 SCREENSHOT: your final draw.io diagram (docs/screenshots/architecture.png) -->
-
 ![Architecture diagram](/architecture/FreshBasket-AWS-Diagram.jpg)
 
 **Request flow**
@@ -78,28 +76,34 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 <summary>📸 Infrastructure screenshots</summary>
 
 **VPC with two public subnets in separate AZs**
-![VPC resource map](docs/screenshots/vpc-resource-map.png)
+![VPC resource map](/screenshots/VPC.png)
+![VPC route table](/screenshots/vpc-route-tables.png)
 
 **Custom AMI**
-![Custom AMI](docs/screenshots/custom-ami.png)
+![Custom AMI](/screenshots/ami.png)
 
 **Elastic Beanstalk environment (Health OK)**
-![Elastic Beanstalk dashboard](docs/screenshots/eb-dashboard.png)
+![Elastic Beanstalk dashboard](/screenshots/elasticbeanstalk.png)
+
+**Elastic Beanstalk Database Setup**
+![Elastic Beanstalk dashboard](/screenshots/elasticbeanstalk-database.png)
 
 **Auto Scaling configuration**
-![Scaling configuration](docs/screenshots/eb-scaling.png)
+![Scaling configuration](/screenshots/asg.png)
 
 **Two instances running in different AZs**
-![EC2 instances](docs/screenshots/ec2-instances.png)
+![EC2 instances](/screenshots/2ec2running.png)
 
 **RDS MySQL: Single-AZ, not publicly accessible**
-![RDS summary](docs/screenshots/rds-summary.png)
+![RDS summary](/screenshots/rds1.png)
+![RDS summary](/screenshots/rds2.png)
 
 **Security group rules**
 ![Security group](docs/screenshots/security-group.png)
 
 **SNS notification email**
-![SNS email](docs/screenshots/sns-email.png)
+![SNS email](/screenshots/emailtimestamp.png)
+![SNS email](/screenshots/emailconfirm.png)
 
 </details>
 
