@@ -73,7 +73,7 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 <!-- 📸 SCREENSHOTS: infrastructure evidence. Keep the ones you think are most impressive. -->
 
 <details>
-<summary>📸 Infrastructure screenshots</summary>
+<summary>Infrastructure screenshots</summary>
 
 **VPC with two public subnets in separate AZs**
 ![VPC resource map](/screenshots/VPC.png)
@@ -99,11 +99,11 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 ![RDS summary](/screenshots/rds2.png)
 
 **Security group rules**
-![Security group](docs/screenshots/security-group.png)
+![Security group](/screenshots/sg.png)
 
 **SNS notification email**
-![SNS email](/screenshots/emailtimestamp.png)
 ![SNS email](/screenshots/emailconfirm.png)
+![SNS email](/screenshots/emailtimestamp.png)
 
 </details>
 
@@ -141,11 +141,12 @@ A small Flask marketplace where growers list produce and everyone sees the live 
 
 <!-- 📸 SCREENSHOT: the success message after adding a listing (docs/screenshots/app-write.png) -->
 
-![Writing to RDS](docs/screenshots/app-write.png)
+<!-- ![Writing to RDS](docs/screenshots/app-write.png) -->
 
 <!-- 📸 SCREENSHOT: same page after a refresh, different instance ID (docs/screenshots/app-load-balancing.png) -->
 
-![Different instance, same data](docs/screenshots/app-load-balancing.png)
+![Different instance, same data](/screenshots/ServeByEc201.png)
+![Different instance, same data](/screenshots/ServeByEc202.png)
 
 ### Endpoints
 
