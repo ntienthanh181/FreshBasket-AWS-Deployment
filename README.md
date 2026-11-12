@@ -73,7 +73,8 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 <!-- 📸 SCREENSHOTS: infrastructure evidence. Keep the ones you think are most impressive. -->
 
 <details>
-<summary>gInfrastructure screenshots</summary>
+**Infrastructure screenshots**
+<summary>view here</summary>
 
 **VPC with two public subnets in separate AZs**
 ![VPC resource map](/screenshots/VPC.png)
