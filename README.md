@@ -18,6 +18,7 @@ A load-balanced, auto-scaling Python web application deployed on AWS across two 
 - [The problem](#the-problem)
 - [Architecture](#architecture)
 - [What I built](#what-i-built)
+- [Infrastructure Screenshots](#infrastructure-screenshots)
 - [How it scales and recovers](#how-it-scales-and-recovers)
 - [The application](#the-application)
 - [Deploying it yourself](#deploying-it-yourself)
@@ -147,8 +148,8 @@ A small Flask marketplace where growers list produce and everyone sees the live 
 
 <!-- 📸 SCREENSHOT: same page after a refresh, different instance ID (docs/screenshots/app-load-balancing.png) -->
 
-![Different instance, same data](/screenshots/ServeByEc201.png)
-![Different instance, same data](/screenshots/ServeByEC202.png)
+![Different instance, same data](/screenshots/instance1.png)
+![Different instance, same data](/screenshots/instance2.png)
 
 ### Endpoints
 
