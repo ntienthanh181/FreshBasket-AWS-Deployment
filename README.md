@@ -73,7 +73,7 @@ The goal was to move it to AWS with an architecture that **scales automatically*
 <!-- 📸 SCREENSHOTS: infrastructure evidence. Keep the ones you think are most impressive. -->
 
 <details>
-<summary>Infrastructure screenshots</summary>
+<summary>gInfrastructure screenshots</summary>
 
 **VPC with two public subnets in separate AZs**
 ![VPC resource map](/screenshots/VPC.png)
@@ -146,7 +146,7 @@ A small Flask marketplace where growers list produce and everyone sees the live 
 <!-- 📸 SCREENSHOT: same page after a refresh, different instance ID (docs/screenshots/app-load-balancing.png) -->
 
 ![Different instance, same data](/screenshots/ServeByEc201.png)
-![Different instance, same data](/screenshots/ServeByEc202.png)
+![Different instance, same data](/screenshots/ServeByEC202.png)
 
 ### Endpoints
 
@@ -191,7 +191,7 @@ aws elasticbeanstalk describe-platform-version --region us-east-1 \
 
 Use the `hvm` image ID.
 
-> ⚠️ The custom AMI **must** be built from the Beanstalk platform image for the same branch you deploy. A plain Amazon Linux AMI doesn't have the Beanstalk agent and the environment won't launch.
+> ! The custom AMI **must** be built from the Beanstalk platform image for the same branch you deploy. A plain Amazon Linux AMI doesn't have the Beanstalk agent and the environment won't launch.
 
 ### 2. Build the custom AMI
 
